@@ -6,7 +6,10 @@ const {PythonShell} = require('python-shell');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    PythonShell.run('./sample.py', (err, result) => {
+    const option  = {mode: 'text'};
+
+    PythonShell.run('./routes/sample.py', option, (err, result) => {
+
         if(err) throw err;
         res.render('index', {title: result});
     });
